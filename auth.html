@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOOB HACKER BD - PHISHING HUB</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 16px;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    /* Dialog Box Styling */
+    #dialogOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      animation: fadeInOverlay 0.4s ease-out;
+    }
+    
+    @keyframes fadeInOverlay {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .dialog-box {
+      background: linear-gradient(135deg, #1a1a2e, #0f0f23);
+      width: 90%;
+      max-width: 450px;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 20px 50px rgba(255, 0, 0, 0.3);
+      border: 2px solid rgba(255, 0, 0, 0.3);
+      text-align: center;
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    @keyframes popIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .dialog-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #ff0000, #ff6b6b, #ff0000);
+    }
+    
+    .warning-icon {
+      font-size: 60px;
+      margin-bottom: 20px;
+      animation: pulseIcon 2s infinite;
+    }
+    
+    @keyframes pulseIcon {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    .dialog-title {
+      color: #ff6b6b;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .dialog-message {
+      color: #ff9999;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+      background: rgba(255, 0, 0, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 3px solid #ff0000;
+    }
+    
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 25px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+    
+    .checkbox-container input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      accent-color: #ff0000;
+    }
+    
+    .checkbox-label {
+      color: #ffcccc;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    
+    .agree-btn {
+      background: linear-gradient(135deg, #ff0000, #cc0000);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 40px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 1px;
+      box-shadow: 0 8px 20px rgba(255, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 0 auto;
+      width: 200px;
+    }
+    
+    .agree-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(255, 0, 0, 0.4);
+      background: linear-gradient(135deg, #ff3333, #ff0000);
+    }
+    
+    .agree-btn:active {
+      transform: translateY(1px);
+    }
+    
+    .agree-btn:disabled {
+      background: #666;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+      opacity: 0.6;
+    }
+    
+    .checkmark {
+      font-size: 18px;
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 32px;
+      border-radius: 20px;
+      max-width: 450px;
+      width: 100%;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+      animation: fadeIn .8s ease-out;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+      display: none;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2, #ff0000);
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .logo-section {
+      text-align: center;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    
+    .logo-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #667eea;
+      box-shadow: 0 0 25px rgba(102, 126, 234, 0.5);
+      margin-bottom: 16px;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .logo-title {
+      font-size: 28px;
+      background: linear-gradient(135deg, #667eea, #ff0000);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin: 0 0 8px 0;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    
+    .logo-subtitle {
+      font-size: 16px;
+      color: #aaa;
+      margin: 0;
+      letter-spacing: 3px;
+      font-weight: 600;
+    }
+    
+    .form-section {
+      margin-top: 10px;
+    }
+    
+    h1 {
+      font-size: 20px;
+      margin-bottom: 6px;
+      text-align: center;
+      color: #fff;
+    }
+    
+    p {
+      font-size: 13px;
+      text-align: center;
+      color: #aaa;
+      margin-bottom: 18px;
+    }
+    
+    .form-group {
+      margin-bottom: 16px;
+    }
+    
+    label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 6px;
+      color: #ddd;
+      font-weight: 500;
+    }
+    
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 14px;
+      outline: none;
+      transition: all .15s ease;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+    
+    input::placeholder {
+      color: #888;
+    }
+    
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, .25);
+      background: rgba(255, 255, 255, 0.12);
+    }
+    
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    
+    button {
+      flex: 1;
+      border: none;
+      border-radius: 999px;
+      padding: 12px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform .08s ease, box-shadow .08s ease, background .15s;
+      letter-spacing: 0.5px;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #764ba2, #667eea);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(102, 126, 234, .4);
+    }
+    
+    .btn-primary:hover {
+      box-shadow: 0 10px 25px rgba(102, 126, 234, .5);
+    }
+    
+    .btn-primary:active {
+      transform: translateY(1px) scale(.99);
+      box-shadow: 0 3px 10px rgba(102, 126, 234, .35);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ddd;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .btn-secondary:active {
+      transform: translateY(1px) scale(.99);
+    }
+    
+    .message {
+      margin-top: 12px;
+      font-size: 13px;
+      text-align: center;
+      min-height: 18px;
+      padding: 8px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .message.error { 
+      color: #ff6b6b;
+      background: rgba(255, 107, 107, 0.1);
+    }
+    
+    .message.success { 
+      color: #4ade80;
+      background: rgba(74, 222, 128, 0.1);
+    }
+    
+    .small {
+      margin-top: 16px;
+      font-size: 11px;
+      text-align: center;
+      color: #777;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 12px;
+    }
+    
+    .glow {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0) 70%);
+      top: -100px;
+      right: -100px;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Dialog Box Overlay -->
+  <div id="dialogOverlay">
+    <div class="dialog-box">
+      <div class="warning-icon">⚠️</div>
+      <h2 class="dialog-title">গুরুত্বপূর্ণ সতর্কতা</h2>
+      
+      <div class="dialog-message">
+        এই ওয়েবসাইটটি সম্পূর্ণরূপে ব্যবহার করবেন আপনারা আপনাদের নিজের দায়িত্বে। 
+        এখানে প্রদত্ত কোন তথ্য বা টুলস এর অপব্যবহারের জন্য আমরা দায়ী নই।
+        <br><br>
+        শুধুমাত্র শিক্ষামূলক উদ্দেশ্যে ব্যবহার করুন। 
+        কোন অবৈধ কার্যকলাপের জন্য আপনি সম্পূর্ণ দায়ী থাকবেন।
+      </div>
+      
+      <div class="checkbox-container">
+        <input type="checkbox" id="agreeCheckbox">
+        <label for="agreeCheckbox" class="checkbox-label">আমি বুঝেছি এবং সমস্ত দায়িত্ব গ্রহণ করছি</label>
+      </div>
+      
+      <button class="agree-btn" id="agreeBtn" disabled>
+        <span class="checkmark">✓</span>
+        এগ্রি করুন
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Login Card -->
+  <div class="card" id="mainCard">
+    <div class="glow"></div>
+    
+    <div class="logo-section">
+      <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Logo" class="logo-img">
+      <h1 class="logo-title">NOOB HACKER BD</h1>
+      <p class="logo-subtitle">PHISHING HUB</p>
+    </div>
+    
+    <div class="form-section" id="formSection">
+      <h1>একাউন্ট লগইন / রেজিস্টার</h1>
+      <p>ড্যাশবোর্ডে ঢুকে আপনার নিজস্ব ফিডব্যাক ফর্ম লিংক তৈরি করুন।</p>
+
+      <div class="form-group">
+        <label for="email">ইমেইল</label>
+        <input type="email" id="email" placeholder="you@example.com">
+      </div>
+
+      <div class="form-group">
+        <label for="password">পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)</label>
+        <input type="password" id="password" placeholder="পাসওয়ার্ড লিখুন">
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-secondary" id="loginBtn">লগইন</button>
+        <button class="btn-primary" id="signupBtn">রেজিস্টার</button>
+      </div>
+
+      <div id="msgBox" class="message"></div>
+      <div class="small">কখনো কারো অন্য সাইটের লগইন তথ্য এই সিস্টেমে ব্যবহার করবেন না।</div>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+  <script>
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyDj5FT2W0F-x62GI2SSi4d_Y-Vtg5ztSXk",
+      authDomain: "phishing-web-5fbfc.firebaseapp.com",
+      projectId: "phishing-web-5fbfc",
+      storageBucket: "phishing-web-5fbfc.firebasestorage.app",
+      messagingSenderId: "552393373788",
+      appId: "1:552393373788:web:a460df425a2bbc40688e99",
+      measurementId: "G-1LQ68R9H4B"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // DOM Elements
+    const dialogOverlay = document.getElementById('dialogOverlay');
+    const agreeCheckbox = document.getElementById('agreeCheckbox');
+    const agreeBtn = document.getElementById('agreeBtn');
+    const mainCard = document.getElementById('mainCard');
+    const emailInput = document.getElementById('email');
+    const passInput = document.getElementById('password');
+    const loginBtn = document.getElementById('loginBtn');
+    const signupBtn = document.getElementById('signupBtn');
+    const msgBox = document.getElementById('msgBox');
+
+    // Check if user has already agreed (using localStorage)
+    const hasAgreed = localStorage.getItem('phishingHubAgreed');
+    
+    if (hasAgreed === 'true') {
+      // User has already agreed, hide dialog and show login card
+      dialogOverlay.style.display = 'none';
+      mainCard.style.display = 'block';
+    }
+
+    // Enable/Disable Agree button based on checkbox
+    agreeCheckbox.addEventListener('change', function() {
+      agreeBtn.disabled = !this.checked;
+    });
+
+    // Agree button click handler
+    agreeBtn.addEventListener('click', function() {
+      if (!agreeCheckbox.checked) return;
+      
+      // Store agreement in localStorage
+      localStorage.setItem('phishingHubAgreed', 'true');
+      
+      // Add animation to dialog box
+      dialogOverlay.style.animation = 'fadeInOverlay 0.4s ease-out reverse';
+      
+      // Hide dialog after animation
+      setTimeout(() => {
+        dialogOverlay.style.display = 'none';
+        // Show login card
+        mainCard.style.display = 'block';
+        
+        // Focus on email input
+        setTimeout(() => {
+          emailInput.focus();
+        }, 300);
+      }, 400);
+    });
+
+    // Show message function
+    function showMsg(text, type='') {
+      msgBox.textContent = text;
+      msgBox.className = 'message ' + type;
+    }
+
+    // Login function
+    loginBtn.onclick = async () => {
+      const email = emailInput.value.trim();
+      const pass = passInput.value.trim();
+      if (!email || !pass) return showMsg('ইমেইল ও পাসওয়ার্ড দিন', 'error');
+
+      try {
+        await auth.signInWithEmailAndPassword(email, pass);
+        showMsg('লগইন সফল! ড্যাশবোর্ডে পাঠানো হচ্ছে...', 'success');
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1500);
+      } catch (err) {
+        showMsg(err.message, 'error');
+      }
+    };
+
+    // Signup function
+    signupBtn.onclick = async () => {
+      const email = emailInput.value.trim();
+      const pass = passInput.value.trim();
+      if (!email || !pass) return showMsg('ইমেইল ও পাসওয়ার্ড দিন', 'error');
+
+      try {
+        await auth.createUserWithEmailAndPassword(email, pass);
+        showMsg('রেজিস্টার সফল! ড্যাশবোর্ডে পাঠানো হচ্ছে...', 'success');
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1500);
+      } catch (err) {
+        showMsg(err.message, 'error');
+      }
+    };
+
+    // Redirect if already logged in
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        window.location.href = 'index.html';
+      }
+    });
+
+    // Prevent right-click
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    
+    // Prevent closing dialog by clicking outside
+    dialogOverlay.addEventListener('click', function(e) {
+      if (e.target === this) {
+        // Optional: Add a shake animation to indicate it can't be closed
+        const dialogBox = document.querySelector('.dialog-box');
+        dialogBox.style.animation = 'none';
+        setTimeout(() => {
+          dialogBox.style.animation = 'popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        }, 10);
+      }
+    });
+  </script>
+</body>
+</html>
